@@ -1,92 +1,170 @@
-# Document Knowledge Base — Local RAG Assistant
+# 🎬 Movie Recommendation System
 
-A clean, production-grade Retrieval-Augmented Generation (RAG) chatbot designed to ingest, index, and query dense PDF documents natively. The system relies on LangChain for pipeline architecture, Google Gemini for semantic embeddings and text synthesis, and ChromaDB for local vector storage.
+Name: Gaurav Gour
+Registration No : 23BSA10096
+Application No : IN26011516
 
-**Author:** Gaurav Gour 
-**Registration Number:** 23BSA10096
+A web-based Movie Recommendation System built using **Python**, **Flask**, **Pandas**, and **Scikit-learn**. The application recommends similar movies based on genre similarity using **TF-IDF Vectorization** and **Cosine Similarity**.
 
----
+## 📌 Project Overview
 
-## Key Features
+The Movie Recommendation System helps users discover movies similar to their selected movie. It uses a content-based recommendation approach by analyzing movie genres and calculating similarity scores between movies.
 
-* **Paced Ingestion Pipeline:** Self-throttling ingestion mechanism with automated backoff logic to safely stay within free-tier API Rate Limits (RPM).
-* **Persistent Local Storage:** Contextual segments are vectorized and cached locally in an optimized Chroma DB structure to prevent redundant API calls.
-* **Stateful UI Interface:** Seamless chat interface built with Streamlit, preserving active session states and message history.
-* **Context Optimization:** Fine-tuned token character splitting ($1000$ chunk size, $150$ overlap) paired with an expanded retrieval window ($k=6$) to minimize text fragmentation and eliminate hallucinations.
+The project features a clean web interface built with Flask and can be deployed online using Render.
 
 ---
 
-## Directory Architecture
+## 🚀 Features
+
+* Movie recommendation based on content similarity
+* User-friendly web interface
+* Fast recommendation generation
+* Content-Based Filtering
+* Flask web application
+* Ready for deployment on Render
+
+---
+
+## 🛠️ Tech Stack
+
+* Python 3
+* Flask
+* Pandas
+* NumPy
+* Scikit-learn
+* HTML5
+* CSS3
+* Gunicorn
+* Render
+
+---
+
+## 📂 Project Structure
 
 ```text
-├── data/               # Source PDFs go here for processing
-├── .chroma_db/         # Generated persistent vector store database
-├── .env                # Local environmental secrets
-├── .gitignore          # Git exclusion framework
-├── requirements.txt    # Application dependencies
-├── ingest.py           # Document chunking & vector ingestion pipeline
-└── app.py              # Stateful Streamlit application code
-
+Movie-Recommendation-System/
+│── app.py
+│── recommender.py
+│── movies.csv
+│── requirements.txt
+│── Procfile
+│── README.md
+│── templates/
+│     └── index.html
+│── static/
+│     └── style.css
 ```
 
 ---
 
-## Installation & Environment Configuration
+## ⚙️ Installation
 
-### 1. Environment Isolation
-
-Set up an isolated environment using `conda` to maintain dependency integrity:
+Clone the repository:
 
 ```bash
-# Create the environment
-conda create -n rag-bot python=3.11 -y
-
-# Activate the workspace
-conda activate rag-bot
-
+git clone https://github.com/AkshatGarg2005/Movie-Recommendation-System
 ```
 
-### 2. Dependency Resolution
+Navigate to the project folder:
 
-Install the required architectural packages compiled in `requirements.txt`:
+```bash
+cd Movie-Recommendation-System
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Activate the virtual environment.
+
+**Windows**
+
+```bash
+venv\Scripts\activate
+```
+
+**Linux/macOS**
+
+```bash
+source venv/bin/activate
+```
+
+Install the required packages:
 
 ```bash
 pip install -r requirements.txt
-
-```
-
-### 3. Environment Secrets Setup
-
-Create a `.env` file in the root project directory and provide your API configuration:
-
-```env
-GEMINI_API_KEY=your_actual_gemini_api_key_here
-
 ```
 
 ---
 
-## Practical Execution Flow
+## ▶️ Running the Application
 
-### Step 1: Ingesting Target Documents
-
-1. Drop your sample PDF or text documentation directly inside the `data/` directory.
-2. Fire up the paced indexing pipeline from your terminal:
+Start the Flask server:
 
 ```bash
-python ingest.py
-
-```
-
-The script will track reading progress, map out distinct text chunks, compute semantic embedding vectors via `gemini-embedding-001`, and save them down inside the local storage bucket (`.chroma_db/`).
-
-### Step 2: Launching the Interaction Interface
-
-Once the data ingestion routine signals a success, boot up the main application:
-
-```bash
-streamlit run app.py
-
+python app.py
 ```
 
 
+## 🧠 Recommendation Algorithm
+
+This project uses **Content-Based Filtering**.
+
+### Workflow
+
+1. Load the movie dataset.
+2. Extract movie genres.
+3. Convert genres into TF-IDF vectors.
+4. Compute cosine similarity between movies.
+5. Recommend the top five most similar movies.
+
+---
+
+## 📊 Dataset
+
+The project uses the **MovieLens Latest Small Dataset** provided by GroupLens Research.
+
+Dataset includes:
+
+* Movie titles
+* Genres
+* Ratings
+
+---
+
+## 🌐 Deployment
+
+This application can be deployed on **Render** using:
+
+* **Build Command**
+
+```text
+pip install -r requirements.txt
+```
+
+* **Start Command**
+
+```text
+gunicorn app:app
+```
+
+---
+
+## 📈 Future Improvements
+
+* Movie posters
+* Search autocomplete
+* TMDb API integration
+* User authentication
+* Personalized recommendations
+* Rating prediction
+* Responsive UI
+* Dark mode
+
+---
+
+## 📄 License
+
+This project is developed for educational and learning purposes.
