@@ -1,7 +1,11 @@
 # 🎬 Movie Recommendation System
 
+Render link : https://movie-recommendation-system-hrm7.onrender.com/
+
 Name: Gaurav Gour
+
 Registration No : 23BSA10096
+
 Application No : IN26011516
 
 A web-based Movie Recommendation System built using **Python**, **Flask**, **Pandas**, and **Scikit-learn**. The application recommends similar movies based on genre similarity using **TF-IDF Vectorization** and **Cosine Similarity**.
